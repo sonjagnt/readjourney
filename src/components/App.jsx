@@ -11,17 +11,15 @@ import { PrivateRoute } from "./PrivateRoute";
 import { Dashboard } from "./Dashboard/Dashboard";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import { refreshUser } from "../redux/auth/operations";
+import { setLoggedIn } from "../redux/auth/slice";
 
 function App() {
   const dispatch = useDispatch();
-
   const isRefreshing = useSelector(selectIsRefreshing);
-  const token = localStorage.getItem("token");
   useEffect(() => {
-    if (token) {
-      dispatch(refreshUser());
-    }
-  }, [dispatch, token]);
+    dispatch(setLoggedIn());
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   if (isRefreshing) {
     return <div>Loading</div>;
@@ -37,7 +35,6 @@ function App() {
         }
       >
         <Route index element={<HomePage />} />
-        <Route path="dashboard" element={<Dashboard />} />
         <Route path="recommended" element={<RecommendedPage />} />
       </Route>
       <Route
