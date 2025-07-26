@@ -2,6 +2,11 @@ form {
   width: 295px;
 }
 
+.logo {
+  height: 17px;
+  margin-bottom: 40px;
+}
+
 input {
   background-color: transparent;
   outline: none;
