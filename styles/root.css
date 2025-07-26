@@ -1,16 +1,29 @@
 @font-face {
   font-family: "Gilroy";
-  src: url("Gilroy-Regular.eot");
-  src: local("Gilroy Regular"), local("Gilroy-Regular"),
-    url("Gilroy-Regular.eot?#iefix") format("embedded-opentype"),
-    url("Gilroy-Regular.woff") format("woff"),
-    url("Gilroy-Regular.ttf") format("truetype");
-  font-weight: normal;
+  src: url("/fonts/Gilroy/Gilroy-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy/Gilroy-Bold.woff") format("woff");
+  font-display: swap;
+  font-weight: 700;
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy/Gilroy-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-family: "Gilroy" sans-serif;
+  --font-family: "Gilroy", sans-serif;
 
   --white: #e5e5e5;
   --gray: #686868;

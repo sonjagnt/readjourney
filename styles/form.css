@@ -1,0 +1,82 @@
+form {
+  width: 295px;
+}
+
+input {
+  background-color: transparent;
+  outline: none;
+  color: var(--white);
+}
+
+.inputBox {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  background-color: var(--input);
+  outline: none;
+  color: var(--white);
+  width: 100%;
+  max-height: 44px;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.inputBox:last-of-type {
+  margin-bottom: 20px;
+}
+
+.errorMsg {
+  position: absolute;
+  top: 54px;
+  left: 0;
+  font-size: 14px;
+}
+
+.formContainer {
+  border-radius: 30px;
+  width: 335px;
+  height: 411px;
+  padding: 40px 20px;
+  background-color: var(--badges);
+  margin-bottom: 10px;
+}
+
+.formContainer h1 {
+  line-height: 100%;
+
+  font-size: 32px;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.formContainer span {
+  color: var(--gray30);
+}
+
+.btn {
+  border-radius: 30px;
+  padding: 12px 29px;
+  width: 140px;
+  background-color: var(--white);
+  color: var(--black);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: 0.02em;
+  margin-right: 14px;
+}
+
+.secondaryBtn {
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--gray);
+}
+
+.inputBox.input {
+  margin-bottom: 72px;
+}

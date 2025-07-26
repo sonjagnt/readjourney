@@ -1,0 +1,26 @@
+.box {
+  position: relative;
+  border-radius: 30px;
+  width: 335px;
+  height: 351px;
+  padding: 40px 20px;
+  background-color: var(--badges);
+  overflow: hidden;
+}
+
+.img {
+  position: absolute;
+  width: 255px;
+  left: 40px;
+  top: 20px;
+  animation: slide-in 1.2s ease-in-out 1 alternate none;
+}
+
+@keyframes slide-in {
+  from {
+    top: 120px;
+  }
+  to {
+    top: 20px;
+  }
+}

@@ -6,7 +6,7 @@ export const registerValidationSchema = Yup.object().shape({
     .max(20, "Too long")
     .required("This field is required!"),
   email: Yup.string()
-    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, "Must be a valid email")
     .email("Must be a valid email")
     .min(3, "Email is too short")
     .max(20, "Email is too long")
