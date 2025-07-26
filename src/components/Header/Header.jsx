@@ -1,7 +1,9 @@
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import logo from "../../assets/logo.svg";
 import { logout } from "../../redux/auth/operations";
+import { Menu } from "../../ui/Menu/Menu";
+import s from "./Header.module.css";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -14,9 +16,19 @@ export const Header = () => {
       <Link to="/">
         <img src={logo} style={{ height: "17px" }} />
       </Link>
-      <button onClick={handleLogOut} style={{ color: "white" }}>
-        Log out
-      </button>
+      <Menu>
+        <nav className={s.nav}>
+          <NavLink to="/" className="menu-item">
+            Home
+          </NavLink>
+          <NavLink to="/library" className="menu-item">
+            My library
+          </NavLink>
+        </nav>
+        <button onClick={handleLogOut} className={s.btn}>
+          Log out
+        </button>
+      </Menu>
     </header>
   );
 };

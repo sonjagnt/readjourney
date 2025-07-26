@@ -5,6 +5,7 @@ import { selectBooks } from "../../redux/books/selectors";
 import { SwiperSlide } from "swiper/react";
 import { Swiper as SwiperComponent } from "swiper/react";
 import "swiper/css";
+import s from "./RecommendedBooks.module.css";
 
 export const RecommendedBooks = () => {
   const dispatch = useDispatch();
@@ -17,12 +18,14 @@ export const RecommendedBooks = () => {
 
   return (
     <>
-      <h2>Recommended</h2>
+      <h2 className={s.title}>Recommended</h2>
       <SwiperComponent spaceBetween={21} slidesPerView={2}>
         {books.map((book) => (
           <SwiperSlide key={book._id}>
-            <div>
-              <img src={book.imageUrl} />
+            <div className={s.bookCard}>
+              <div className={s.imgBox}>
+                <img src={book.imageUrl} alt="Book cover" className={s.img} />
+              </div>
               <h5>{book.title}</h5>
               <p>{book.author}</p>
             </div>

@@ -7,6 +7,7 @@ import { PhoneBox } from "../../ui/PhoneBox/PhoneBox";
 import "../../../styles/form.css";
 import { Link } from "react-router";
 import logo from "../../assets/logo.svg";
+import { Box } from "../../ui/Box/Box";
 
 export const LoginForm = () => {
   const {
@@ -21,17 +22,19 @@ export const LoginForm = () => {
   };
   return (
     <>
-      <div className="formContainer">
+      <Box>
         <img src={logo} className="logo" />
-        <h1>
+        <h1 className="title">
           Expand your mind, reading <span>a book</span>
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="inputBox">
+            <span className="label">Email:</span>
             <input {...register("email")} />
             <span className="errorMsg">{errors.email?.message}</span>
           </div>
           <div className="inputBox input">
+            <span className="label">Password:</span>
             <input {...register("password")} />
             <span className="errorMsg">{errors.password?.message}</span>
           </div>
@@ -42,7 +45,7 @@ export const LoginForm = () => {
             Dont have an account?
           </Link>
         </form>
-      </div>
+      </Box>
       <PhoneBox />
     </>
   );

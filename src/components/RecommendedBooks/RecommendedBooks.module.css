@@ -1,0 +1,31 @@
+.title {
+  margin-bottom: 34px;
+}
+
+.bookCard h5 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #f9f9f9;
+  margin-bottom: 2px;
+  max-height: 50px;
+  overflow: auto;
+}
+
+.bookCard p {
+  color: var(--gray);
+  font-size: 10px;
+}
+
+.imgBox {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 137px;
+  margin-bottom: 8px;
+}
+
+.img {
+  height: 208px;
+  object-fit: cover;
+}

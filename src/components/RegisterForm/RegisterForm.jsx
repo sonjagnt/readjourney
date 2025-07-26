@@ -5,6 +5,7 @@ import { loginUser, registerUser } from "../../service/readjourney-api";
 import { Link } from "react-router";
 import "../../../styles/form.css";
 import { PhoneBox } from "../../ui/PhoneBox/PhoneBox";
+import { Box } from "../../ui/Box/Box";
 
 export const RegisterForm = () => {
   const {
@@ -19,8 +20,8 @@ export const RegisterForm = () => {
   };
   return (
     <>
-      <div className="formContainer">
-        <h1>
+      <Box>
+        <h1 className="title">
           Expand your mind, reading <span>a book</span>
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,7 +47,7 @@ export const RegisterForm = () => {
             Already have an account?
           </Link>
         </form>
-      </div>
+      </Box>
       <PhoneBox />
     </>
   );

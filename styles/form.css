@@ -13,6 +13,10 @@ input {
   color: var(--white);
 }
 
+.label {
+  color: var(--gray);
+}
+
 .inputBox {
   align-items: center;
   display: flex;
@@ -38,17 +42,7 @@ input {
   left: 0;
   font-size: 14px;
 }
-
-.formContainer {
-  border-radius: 30px;
-  width: 335px;
-  height: 411px;
-  padding: 40px 20px;
-  background-color: var(--badges);
-  margin-bottom: 10px;
-}
-
-.formContainer h1 {
+.title {
   line-height: 100%;
 
   font-size: 32px;

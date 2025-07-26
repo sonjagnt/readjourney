@@ -1,0 +1,13 @@
+.menu {
+  position: fixed;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  width: 200px;
+  background-color: var(--input);
+  height: 100%;
+}
