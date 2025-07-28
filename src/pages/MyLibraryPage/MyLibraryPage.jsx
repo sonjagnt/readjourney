@@ -9,9 +9,10 @@ export const MyLibraryPage = () => {
       MyLibraryPage
       <Dashboard>
         <AddBook />
-
-        <RecommendedBooks />
       </Dashboard>
+      <Box>
+        <RecommendedBooks />
+      </Box>
     </section>
   );
 };

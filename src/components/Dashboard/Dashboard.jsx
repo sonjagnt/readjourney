@@ -1,5 +1,5 @@
-import s from "./Dashboard.module.css";
+import { Box } from "../../ui/Box/Box";
 
 export const Dashboard = ({ children }) => {
-  return <div className={s.dashboardBox}>{children}</div>;
+  return <Box>{children}</Box>;
 };

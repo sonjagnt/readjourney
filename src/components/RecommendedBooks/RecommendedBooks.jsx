@@ -9,13 +9,11 @@ import { SwiperSlide } from "swiper/react";
 import { Swiper as SwiperComponent } from "swiper/react";
 import "swiper/css";
 import s from "./RecommendedBooks.module.css";
-import clsx from "clsx";
 
 export const RecommendedBooks = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const totalPages = useSelector(selectTotalPages);
-  console.log(page);
 
   const handleNext = () => {
     if (totalPages > 1) {
@@ -33,9 +31,10 @@ export const RecommendedBooks = () => {
     dispatch(getBooks(page));
   }, [dispatch, page]);
 
-  // const books = useSelector(selectBooks);
   const filteredBooks = useSelector(selectFilteredBooks);
-
+  if (filteredBooks.length === 0) {
+    return <p>No books found. Please, try again!</p>;
+  }
   return (
     <>
       <h2 className={s.title}>Recommended</h2>
