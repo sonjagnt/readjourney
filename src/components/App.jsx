@@ -8,10 +8,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Layout } from "./Layout/Layout";
 import { PrivateRoute } from "./PrivateRoute";
-import { Dashboard } from "./Dashboard/Dashboard";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import { refreshUser } from "../redux/auth/operations";
 import { setLoggedIn } from "../redux/auth/slice";
+import { MyLibraryPage } from "../pages/MyLibraryPage/MyLibraryPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +36,7 @@ function App() {
       >
         <Route index element={<HomePage />} />
         <Route path="recommended" element={<RecommendedPage />} />
+        <Route path="library" element={<MyLibraryPage />} />
       </Route>
       <Route
         path="/register"

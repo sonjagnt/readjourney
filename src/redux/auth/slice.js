@@ -61,12 +61,12 @@ const authSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.payload;
-        if (action.payload === "Unauthorized") {
-          localStorage.removeItem("token");
-          localStorage.removeItem("refreshToken");
-          state.user = null;
-          state.isLoggedIn = false;
-        }
+
+        localStorage.removeItem("token");
+        localStorage.removeItem("refreshToken");
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
       })
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, () => {

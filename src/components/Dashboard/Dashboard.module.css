@@ -1,0 +1,7 @@
+.dashboardBox {
+  border-radius: 30px;
+  width: 335px;
+  background-color: var(--badges);
+  padding: 20px;
+  margin-bottom: 10px;
+}

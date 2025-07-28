@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 export const RestrictedRoute = ({ children, redirectTo = "/" }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  console.log(isLoggedIn);
 
-  return isLoggedIn ? <Navigate to={redirectTo} /> : children;
+  return isLoggedIn ? <Navigate to={redirectTo} replace /> : children;
 };

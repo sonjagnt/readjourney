@@ -2,12 +2,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerValidationSchema } from "../../../utils/validationSchema";
 import { loginUser, registerUser } from "../../service/readjourney-api";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import "../../../styles/form.css";
 import { PhoneBox } from "../../ui/PhoneBox/PhoneBox";
 import { Box } from "../../ui/Box/Box";
 
 export const RegisterForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,7 +17,7 @@ export const RegisterForm = () => {
 
   const onSubmit = async ({ name, email, password }) => {
     await registerUser({ name, email, password });
-    await loginUser({ email, password });
+    await loginUser({ email, password }).then(() => navigate("/"));
   };
   return (
     <>

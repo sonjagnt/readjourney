@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooks } from "../../redux/books/operations";
-import { selectBooks } from "../../redux/books/selectors";
+import { selectFilteredBooks } from "../../redux/books/selectors";
 import { SwiperSlide } from "swiper/react";
 import { Swiper as SwiperComponent } from "swiper/react";
 import "swiper/css";
@@ -14,13 +14,14 @@ export const RecommendedBooks = () => {
     dispatch(getBooks());
   }, [dispatch]);
 
-  const books = useSelector(selectBooks);
+  // const books = useSelector(selectBooks);
+  const filteredBooks = useSelector(selectFilteredBooks);
 
   return (
     <>
       <h2 className={s.title}>Recommended</h2>
       <SwiperComponent spaceBetween={21} slidesPerView={2}>
-        {books.map((book) => (
+        {filteredBooks.map((book) => (
           <SwiperSlide key={book._id}>
             <div className={s.bookCard}>
               <div className={s.imgBox}>
