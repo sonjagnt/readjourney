@@ -1,18 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooks } from "../../redux/books/operations";
-import { selectFilteredBooks } from "../../redux/books/selectors";
+import {
+  selectFilteredBooks,
+  selectTotalPages,
+} from "../../redux/books/selectors";
 import { SwiperSlide } from "swiper/react";
 import { Swiper as SwiperComponent } from "swiper/react";
 import "swiper/css";
 import s from "./RecommendedBooks.module.css";
+import clsx from "clsx";
 
 export const RecommendedBooks = () => {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const totalPages = useSelector(selectTotalPages);
+  console.log(page);
+
+  const handleNext = () => {
+    if (totalPages > 1) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
+    }
+  };
 
   useEffect(() => {
-    dispatch(getBooks());
-  }, [dispatch]);
+    dispatch(getBooks(page));
+  }, [dispatch, page]);
 
   // const books = useSelector(selectBooks);
   const filteredBooks = useSelector(selectFilteredBooks);
@@ -33,6 +52,12 @@ export const RecommendedBooks = () => {
           </SwiperSlide>
         ))}
       </SwiperComponent>
+      <button disabled={page === 1} onClick={handlePrev}>
+        prev
+      </button>
+      <button disabled={page >= totalPages} onClick={handleNext}>
+        next
+      </button>
     </>
   );
 };

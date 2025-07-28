@@ -10,6 +10,7 @@ const booksSlice = createSlice({
   name: "books",
   initialState: {
     books: [],
+    totalPages: null,
     isLoading: false,
     error: null,
   },
@@ -17,7 +18,8 @@ const booksSlice = createSlice({
     builder
       .addCase(getBooks.pending, handlePending)
       .addCase(getBooks.fulfilled, (state, action) => {
-        state.books = action.payload;
+        state.books = action.payload.results;
+        state.totalPages = action.payload.totalPages;
         state.isLoading = false;
         state.error = null;
       });

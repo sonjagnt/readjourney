@@ -20,3 +20,5 @@ export const selectFilteredBooks = createSelector(
     });
   }
 );
+
+export const selectTotalPages = (state) => state.books.totalPages;

@@ -3,12 +3,12 @@ import axios from "axios";
 
 export const getBooks = createAsyncThunk(
   "books/getBooks",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const res = await axios.get("books/recommend");
+      const res = await axios.get(`books/recommend/?page=${page}`);
       console.log(res.data);
 
-      return res.data.results;
+      return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
