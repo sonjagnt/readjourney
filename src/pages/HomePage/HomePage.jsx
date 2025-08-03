@@ -1,9 +1,9 @@
 import { RecommendedPage } from "../RecommendedPage/RecommendedPage";
 
-export const HomePage = () => {
+export const HomePage = ({ openModal }) => {
   return (
     <>
-      <RecommendedPage />
+      <RecommendedPage openModal={openModal} />
     </>
   );
 };

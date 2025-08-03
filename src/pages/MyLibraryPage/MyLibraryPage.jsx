@@ -3,16 +3,12 @@ import { Dashboard } from "../../components/Dashboard/Dashboard";
 import { RecommendedBooks } from "../../components/RecommendedBooks/RecommendedBooks";
 import { Box } from "../../ui/Box/Box";
 
-export const MyLibraryPage = () => {
+export const MyLibraryPage = ({ openModal }) => {
   return (
     <section>
-      MyLibraryPage
       <Dashboard>
-        <AddBook />
+        <AddBook onOpenModal={openModal} />
       </Dashboard>
-      <Box>
-        <RecommendedBooks />
-      </Box>
     </section>
   );
 };

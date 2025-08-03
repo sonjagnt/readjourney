@@ -1,0 +1,30 @@
+.modalBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBox h3 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.author {
+  color: var(--gray30);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.pages {
+  margin-bottom: 20px;
+}
+
+.imgWrapper {
+  width: 140px;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}

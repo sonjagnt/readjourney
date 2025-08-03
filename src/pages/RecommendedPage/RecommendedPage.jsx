@@ -3,14 +3,16 @@ import { FilterBar } from "../../components/FilterBar/FilterBar";
 import { RecommendedBooks } from "../../components/RecommendedBooks/RecommendedBooks";
 import { Box } from "../../ui/Box/Box";
 
-export const RecommendedPage = () => {
+export const RecommendedPage = ({ openModal }) => {
+  console.log(typeof openModal);
+
   return (
     <section>
       <Dashboard>
         <FilterBar />
       </Dashboard>
       <Box>
-        <RecommendedBooks />
+        <RecommendedBooks onOpenModal={openModal} />
       </Box>
     </section>
   );

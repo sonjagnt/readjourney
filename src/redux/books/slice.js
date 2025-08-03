@@ -14,6 +14,11 @@ const booksSlice = createSlice({
     isLoading: false,
     error: null,
   },
+  reducers: {
+    appendBooks(state, action) {
+      state.books = state.books.push(action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getBooks.pending, handlePending)

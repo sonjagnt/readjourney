@@ -1,6 +1,4 @@
-import { IoCloseOutline } from "react-icons/io5";
 import Modal from "react-modal";
-import s from "./ModalWindow.module.css";
 
 Modal.setAppElement("#root");
 
@@ -13,16 +11,15 @@ export const ModalWindow = ({ children, onClose, isOpen }) => {
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      backgroundColor: "var(--white)",
-      borderRadius: "30px",
-      width: " 565px",
-      minHeight: "505px",
-      border: "none",
-      padding: "64px",
-      boxShadow: "3px 6px 29px 2px rgba(0,0,0,0.2)",
+      backgroundColor: "var(--badges)",
+      borderRadius: "12px",
+      width: "335px",
+      border: " 1px solid rgba(104, 104, 104, 0.2)",
+      padding: "40px",
     },
     overlay: {
-      backdropFilter: "blur(5px)",
+      backgroundColor: "rgba(20, 20, 20, 0.6)",
+      zIndex: "9999",
     },
   };
 
@@ -34,9 +31,7 @@ export const ModalWindow = ({ children, onClose, isOpen }) => {
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <button onClick={onClose} className={s.btn}>
-        <IoCloseOutline size={32} />
-      </button>
+      <button onClick={onClose}>close</button>
       {children}
     </Modal>
   );

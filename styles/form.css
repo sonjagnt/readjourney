@@ -11,6 +11,11 @@ form {
   width: 295px;
 }
 
+.imgBox {
+  display: flex;
+  justify-self: start;
+}
+
 .logo {
   height: 17px;
   margin-bottom: 40px;
@@ -61,7 +66,7 @@ input {
   margin-bottom: 20px;
 }
 
-.formContainer span {
+.title span {
   color: var(--gray30);
 }
 

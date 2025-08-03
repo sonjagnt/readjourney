@@ -1,0 +1,10 @@
+.addBookForm {
+  margin-bottom: 20px;
+}
+
+.container {
+  width: 295px;
+  padding: 20px;
+  background-color: var(--input);
+  border-radius: 12px;
+}

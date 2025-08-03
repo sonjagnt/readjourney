@@ -23,7 +23,9 @@ export const LoginForm = () => {
   return (
     <>
       <Box>
-        <img src={logo} className="logo" />
+        <div className="imgBox">
+          <img src={logo} className="logo" />
+        </div>
         <h1 className="title">
           Expand your mind, reading <span>a book</span>
         </h1>

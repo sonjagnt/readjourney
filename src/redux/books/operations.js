@@ -6,8 +6,6 @@ export const getBooks = createAsyncThunk(
   async (page, thunkAPI) => {
     try {
       const res = await axios.get(`books/recommend/?page=${page}`);
-      console.log(res.data);
-
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
