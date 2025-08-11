@@ -37,7 +37,18 @@ export const addBookById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const res = await axios.post(`books/add/${id}`);
-      console.log("success");
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const getOwnBooks = createAsyncThunk(
+  "books/getOwnBooks",
+  async (_, thunkAPI) => {
+    try {
+      const res = await axios.get("books/own");
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

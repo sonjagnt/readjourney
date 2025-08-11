@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addBook, addBookById, getBooks } from "./operations";
+import { addBook, addBookById, getBooks, getOwnBooks } from "./operations";
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -14,11 +14,6 @@ const booksSlice = createSlice({
     totalPages: null,
     isLoading: false,
     error: null,
-  },
-  reducers: {
-    appendBooks(state, action) {
-      state.books = state.books.push(action.payload);
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -35,15 +30,25 @@ const booksSlice = createSlice({
       })
       .addCase(addBook.pending, handlePending)
       .addCase(addBook.fulfilled, (state, action) => {
-        state.userBooks = state.userBooks.push(action.payload);
+        state.userBooks = [
+          ...state.userBooks.filter((book) => book._id !== action.payload._id),
+          action.payload,
+        ];
         state.isLoading = false;
         state.error = null;
       })
       .addCase(addBookById.pending, handlePending)
       .addCase(addBookById.fulfilled, (state, action) => {
-        state.userBooks = state.userBooks.push(action.payload);
+        state.userBooks = [
+          ...state.userBooks.filter((book) => book._id !== action.payload._id),
+          action.payload,
+        ];
         state.isLoading = false;
         state.error = null;
+      })
+      .addCase(getOwnBooks.fulfilled, (state, action) => {
+        const uniqueBooks = new Set(action.payload);
+        state.userBooks = [...uniqueBooks];
       });
   },
 });

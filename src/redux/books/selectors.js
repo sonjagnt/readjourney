@@ -22,3 +22,4 @@ export const selectFilteredBooks = createSelector(
 );
 
 export const selectTotalPages = (state) => state.books.totalPages;
+export const selectUserBooks = (state) => state.books.userBooks;

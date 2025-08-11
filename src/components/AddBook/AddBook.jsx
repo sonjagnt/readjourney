@@ -3,13 +3,12 @@ import { useDispatch } from "react-redux";
 import { resetFilters } from "../../redux/filters/slice";
 import { RecommendedBooks } from "../RecommendedBooks/RecommendedBooks";
 import s from "./AddBook.module.css";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import { addBook } from "../../redux/books/operations";
 
 export const AddBook = ({ onOpenModal }) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     dispatch(resetFilters());
@@ -39,9 +38,9 @@ export const AddBook = ({ onOpenModal }) => {
       </form>
       <div className={s.container}>
         <RecommendedBooks slidesPerView={3} variant="compact" />
-        <button onClick={() => navigate("/")} className="secondaryBtn">
+        <Link to="/" className="secondaryBtn">
           Home
-        </button>
+        </Link>
       </div>
     </>
   );
