@@ -25,7 +25,6 @@ export const RecommendedBooks = ({
   const filteredBooks = useSelector(selectFilteredBooks);
   const booksPerPage = 10;
   const filters = useSelector(selectFilters);
-  console.log(filters);
 
   const pageBooks = filteredBooks.slice(
     (page - 1) * booksPerPage,

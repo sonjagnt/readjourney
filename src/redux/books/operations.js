@@ -18,3 +18,29 @@ export const getBooks = createAsyncThunk(
     }
   }
 );
+
+export const addBook = createAsyncThunk(
+  "books/addBook",
+  async (data, thunkAPI) => {
+    try {
+      const res = await axios.post("books/add", data);
+      console.log("success");
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const addBookById = createAsyncThunk(
+  "books/addBookById",
+  async (id, thunkAPI) => {
+    try {
+      const res = await axios.post(`books/add/${id}`);
+      console.log("success");
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

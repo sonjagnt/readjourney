@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBooks } from "./operations";
+import { addBook, addBookById, getBooks } from "./operations";
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -10,6 +10,7 @@ const booksSlice = createSlice({
   name: "books",
   initialState: {
     books: [],
+    userBooks: [],
     totalPages: null,
     isLoading: false,
     error: null,
@@ -24,13 +25,23 @@ const booksSlice = createSlice({
       .addCase(getBooks.pending, handlePending)
       .addCase(getBooks.fulfilled, (state, action) => {
         if (state.books.length && action.meta.arg.page > 1) {
-          // если загружаем следующую страницу, добавляем новые книги
           state.books = [...state.books, ...action.payload.results];
         } else {
-          // если это первая страница, перезаписываем
           state.books = action.payload.results;
         }
         state.totalPages = action.payload.totalPages;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(addBook.pending, handlePending)
+      .addCase(addBook.fulfilled, (state, action) => {
+        state.userBooks = state.userBooks.push(action.payload);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(addBookById.pending, handlePending)
+      .addCase(addBookById.fulfilled, (state, action) => {
+        state.userBooks = state.userBooks.push(action.payload);
         state.isLoading = false;
         state.error = null;
       });
