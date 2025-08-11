@@ -6,6 +6,7 @@ import {
   setBookTitle,
   setPages,
 } from "../../redux/filters/slice";
+import { getBooks } from "../../redux/books/operations";
 
 export const FilterBar = () => {
   const { register, handleSubmit } = useForm();
@@ -16,6 +17,7 @@ export const FilterBar = () => {
     dispatch(setBookTitle(title));
     dispatch(setAuthor(author));
     dispatch(setPages(pages));
+    dispatch(getBooks({ page: 1, filters: { title, author, pages } }));
   };
 
   return (

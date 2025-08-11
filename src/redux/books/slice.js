@@ -23,7 +23,13 @@ const booksSlice = createSlice({
     builder
       .addCase(getBooks.pending, handlePending)
       .addCase(getBooks.fulfilled, (state, action) => {
-        state.books = action.payload.results;
+        if (state.books.length && action.meta.arg.page > 1) {
+          // если загружаем следующую страницу, добавляем новые книги
+          state.books = [...state.books, ...action.payload.results];
+        } else {
+          // если это первая страница, перезаписываем
+          state.books = action.payload.results;
+        }
         state.totalPages = action.payload.totalPages;
         state.isLoading = false;
         state.error = null;

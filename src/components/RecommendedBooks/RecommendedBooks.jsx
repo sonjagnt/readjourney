@@ -11,6 +11,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import s from "./RecommendedBooks.module.css";
+import { selectFilters } from "../../redux/filters/selectors";
 
 export const RecommendedBooks = ({
   slidesPerView = 2,
@@ -22,26 +23,31 @@ export const RecommendedBooks = ({
   const totalPages = useSelector(selectTotalPages);
   const swiperRef = useRef();
   const filteredBooks = useSelector(selectFilteredBooks);
+  const booksPerPage = 10;
+  const filters = useSelector(selectFilters);
+  console.log(filters);
+
+  const pageBooks = filteredBooks.slice(
+    (page - 1) * booksPerPage,
+    page * booksPerPage
+  );
+
+  const handleNextPage = () => {
+    setPage((prev) => (prev < totalPages ? prev + 1 : 1));
+  };
+
+  const handlePrevPage = () => {
+    setPage((prev) => (prev > 1 ? prev - 1 : totalPages));
+  };
 
   useEffect(() => {
-    dispatch(getBooks(page));
-  }, [dispatch, page]);
+    dispatch(getBooks({ page, filters }));
+    setPage(1);
+    swiperRef.current?.slideTo(0);
+  }, [dispatch, page, filters]);
 
   const handleOpenModal = (book) => {
     onOpenModal(book);
-    console.log(book);
-  };
-
-  const handleReachEnd = () => {
-    if (page < totalPages) {
-      const currentIndex = swiperRef.current?.activeIndex || 0;
-
-      setPage((prev) => prev + 1);
-
-      setTimeout(() => {
-        swiperRef.current?.slideTo(currentIndex, 0);
-      }, 0);
-    }
   };
 
   if (filteredBooks.length === 0) {
@@ -58,16 +64,11 @@ export const RecommendedBooks = ({
         modules={[Navigation]}
         spaceBetween={20}
         slidesPerView={slidesPerView}
-        onReachEnd={handleReachEnd}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
       >
-        {filteredBooks.map((book) => (
+        {pageBooks.map((book) => (
           <SwiperSlide key={book._id} onClick={() => handleOpenModal(book)}>
             <div
               className={`${s.bookCard} ${
@@ -82,9 +83,10 @@ export const RecommendedBooks = ({
             </div>
           </SwiperSlide>
         ))}
-        <div className="swiper-button-prev" />
-        <div className="swiper-button-next" />
       </SwiperComponent>
+
+      <div className="swiper-button-prev" onClick={handlePrevPage} />
+      <div className="swiper-button-next" onClick={handleNextPage} />
     </>
   );
 };

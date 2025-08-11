@@ -52,7 +52,7 @@ export const AddBook = ({ onOpenModal }) => {
           />
         </div>
 
-        <button type="submit" className="grayBtn" onClick={onOpenModal}>
+        <button type="submit" onClick={onOpenModal}>
           Add book
         </button>
       </form>
