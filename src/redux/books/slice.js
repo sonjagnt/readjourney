@@ -6,6 +6,14 @@ const handlePending = (state) => {
   state.error = null;
 };
 
+const removeDuplicateBooks = (books) => {
+  return books.filter(
+    (book, index, self) =>
+      index ===
+      self.findIndex((b) => b.title === book.title && b.author === book.author)
+  );
+};
+
 const booksSlice = createSlice({
   name: "books",
   initialState: {
@@ -28,27 +36,31 @@ const booksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
+
       .addCase(addBook.pending, handlePending)
       .addCase(addBook.fulfilled, (state, action) => {
-        state.userBooks = [
-          ...state.userBooks.filter((book) => book._id !== action.payload._id),
+        state.userBooks = removeDuplicateBooks([
+          ...state.userBooks,
           action.payload,
-        ];
+        ]);
         state.isLoading = false;
         state.error = null;
       })
+
       .addCase(addBookById.pending, handlePending)
       .addCase(addBookById.fulfilled, (state, action) => {
-        state.userBooks = [
-          ...state.userBooks.filter((book) => book._id !== action.payload._id),
+        state.userBooks = removeDuplicateBooks([
+          ...state.userBooks,
           action.payload,
-        ];
+        ]);
         state.isLoading = false;
         state.error = null;
       })
+
       .addCase(getOwnBooks.fulfilled, (state, action) => {
-        const uniqueBooks = new Set(action.payload);
-        state.userBooks = [...uniqueBooks];
+        state.userBooks = removeDuplicateBooks(action.payload);
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });
