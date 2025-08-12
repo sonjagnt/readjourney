@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import { Icon } from "../Icon/Icon";
 
 Modal.setAppElement("#root");
 
@@ -19,7 +20,7 @@ export const ModalWindow = ({ children, onClose, isOpen }) => {
     },
     overlay: {
       backgroundColor: "rgba(20, 20, 20, 0.6)",
-      zIndex: "9999",
+      zIndex: "999",
     },
   };
 
@@ -31,7 +32,16 @@ export const ModalWindow = ({ children, onClose, isOpen }) => {
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <button onClick={onClose}>close</button>
+      <button
+        onClick={onClose}
+        style={{
+          position: "absolute",
+          top: "16px",
+          right: "16px",
+        }}
+      >
+        <Icon name="close" width={20} height={20} />
+      </button>
       {children}
     </Modal>
   );

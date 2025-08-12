@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import s from "./AddBookModal.module.css";
 import { addBookById } from "../../redux/books/operations";
 
-export const AddBookModal = ({ onClose, book }) => {
+export const AddBookModal = ({ book, onSuccess }) => {
   const dispatch = useDispatch();
   const handleAddBook = (id) => {
     dispatch(addBookById(id));
@@ -19,7 +19,7 @@ export const AddBookModal = ({ onClose, book }) => {
       <button
         onClick={() => {
           handleAddBook(book._id);
-          onClose();
+          onSuccess();
         }}
         className="grayBtn"
       >

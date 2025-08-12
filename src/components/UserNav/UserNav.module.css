@@ -58,6 +58,13 @@
   height: 38px;
 }
 
+.closeBtn {
+  position: absolute;
+  top: 34px;
+  right: 40px;
+  cursor: pointer;
+}
+
 @keyframes slide-in {
   from {
     right: -200px;

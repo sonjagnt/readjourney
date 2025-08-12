@@ -4,6 +4,7 @@ import { FilterBar } from "../../components/FilterBar/FilterBar";
 import { RecommendedBooks } from "../../components/RecommendedBooks/RecommendedBooks";
 import { Box } from "../../ui/Box/Box";
 import s from "./RecommendedPage.module.css";
+import { Icon } from "../../ui/Icon/Icon";
 
 export const RecommendedPage = ({ openModal }) => {
   return (
@@ -28,9 +29,14 @@ export const RecommendedPage = ({ openModal }) => {
               </p>
             </li>
           </ul>
-          <Link to="/library" className="secondaryBtn">
-            My library
-          </Link>
+          <div className={s.btnBox}>
+            <Link to="/library" className="secondaryBtn">
+              My library
+            </Link>
+            <Link to="/library" className={s.iconLink}>
+              <Icon name="log-in" />
+            </Link>
+          </div>
         </div>
       </Dashboard>
       <Box>

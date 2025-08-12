@@ -28,3 +28,29 @@ export const loginValidationSchema = Yup.object().shape({
     .max(20, "Password is too long")
     .required("This field is required!"),
 });
+
+export const addBookValidationSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(2, "Title is too short")
+    .max(50, "Title is too long")
+    .required("This field is required!"),
+  author: Yup.string()
+    .min(2, "Author is too short")
+    .max(50, "Author is too long")
+    .required("This field is required!"),
+  totalPages: Yup.number()
+    .min(1, "Total pages must be at least 1")
+    .max(10000, "Total pages cannot exceed 10000")
+    .required("This field is required!"),
+});
+
+export const bookValidationSchema = Yup.object().shape({
+  title: Yup.string()
+    .min(2, "Title is too short")
+    .max(50, "Title is too long")
+    .required("This field is required!"),
+  author: Yup.string()
+    .min(2, "Author is too short")
+    .max(50, "Author is too long")
+    .required("This field is required!"),
+});

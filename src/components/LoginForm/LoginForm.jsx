@@ -6,8 +6,9 @@ import { login } from "../../redux/auth/operations";
 import { PhoneBox } from "../../ui/PhoneBox/PhoneBox";
 import "../../../styles/form.css";
 import { Link } from "react-router";
-import logo from "../../assets/logo.svg";
+
 import { Box } from "../../ui/Box/Box";
+import { Icon } from "../../ui/Icon/Icon";
 
 export const LoginForm = () => {
   const {
@@ -24,7 +25,7 @@ export const LoginForm = () => {
     <>
       <Box>
         <div className="imgBox">
-          <img src={logo} className="logo" />
+          <Icon name="logo" color="var(--white)" width={42} className="logo" />
         </div>
         <h1 className="title">
           Expand your mind, reading <span>a book</span>

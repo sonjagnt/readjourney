@@ -1,0 +1,12 @@
+.imgBox {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 137px;
+  height: 208px;
+  margin-bottom: 8px;
+}
+
+.img {
+  height: 100%;
+  object-fit: cover;
+}

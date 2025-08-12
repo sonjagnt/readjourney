@@ -55,3 +55,15 @@ export const getOwnBooks = createAsyncThunk(
     }
   }
 );
+
+export const removeBook = createAsyncThunk(
+  "books/removeBook",
+  async (id, thunkAPI) => {
+    try {
+      const res = await axios.delete(`books/remove/${id}`);
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

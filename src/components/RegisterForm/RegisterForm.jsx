@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router";
 import "../../../styles/form.css";
 import { PhoneBox } from "../../ui/PhoneBox/PhoneBox";
 import { Box } from "../../ui/Box/Box";
-import logo from "../../assets/logo.svg";
+import { Icon } from "../../ui/Icon/Icon";
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const RegisterForm = () => {
     <>
       <Box>
         <div className="imgBox">
-          <img src={logo} className="logo" />
+          <Icon name="logo" color="var(--white)" width={42} className="logo" />
         </div>
         <h1 className="title">
           Expand your mind, reading <span>a book</span>

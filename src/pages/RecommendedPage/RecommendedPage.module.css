@@ -39,3 +39,16 @@
   background-color: var(--white);
   padding: 11px;
 }
+
+.btnBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+
+  font-size: 18px;
+}

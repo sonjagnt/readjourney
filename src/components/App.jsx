@@ -14,12 +14,13 @@ import { setLoggedIn } from "../redux/auth/slice";
 import { MyLibraryPage } from "../pages/MyLibraryPage/MyLibraryPage";
 import { ModalWindow } from "../ui/ModalWindow/ModalWindow";
 import { AddBookModal } from "./AddBookModal/AddBookModal";
+import { SuccessModal } from "./SuccessModal/SuccessModal";
 
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
   const [modalOpen, setModalOpen] = useState(false);
-
+  const [modalType, setModalType] = useState(null);
   const [selectedBook, setSelectedBook] = useState(null);
 
   const handleClose = () => {
@@ -27,8 +28,14 @@ function App() {
     setSelectedBook(null);
   };
 
-  const handleOpenModal = (book) => {
+  const handleOpenAddBookModal = (book) => {
     setSelectedBook(book);
+    setModalType("addBook");
+    setModalOpen(true);
+  };
+
+  const handleOpenSuccessModal = () => {
+    setModalType("success");
     setModalOpen(true);
   };
 
@@ -43,9 +50,13 @@ function App() {
   return (
     <>
       <ModalWindow isOpen={modalOpen} onClose={handleClose}>
-        {selectedBook && (
-          <AddBookModal onClose={handleClose} book={selectedBook} />
+        {modalType === "addBook" && selectedBook && (
+          <AddBookModal
+            book={selectedBook}
+            onSuccess={handleOpenSuccessModal}
+          />
         )}
+        {modalType === "success" && <SuccessModal />}
       </ModalWindow>
       <Routes>
         <Route
@@ -56,14 +67,17 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route index element={<HomePage openModal={handleOpenModal} />} />
+          <Route
+            index
+            element={<HomePage openModal={handleOpenAddBookModal} />}
+          />
           <Route
             path="recommended"
-            element={<RecommendedPage openModal={handleOpenModal} />}
+            element={<RecommendedPage openModal={handleOpenAddBookModal} />}
           />
           <Route
             path="library"
-            element={<MyLibraryPage openModal={handleOpenModal} />}
+            element={<MyLibraryPage openModal={handleOpenAddBookModal} />}
           />
         </Route>
         <Route

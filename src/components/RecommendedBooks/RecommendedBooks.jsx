@@ -41,9 +41,12 @@ export const RecommendedBooks = ({
 
   useEffect(() => {
     dispatch(getBooks({ page, filters }));
-    setPage(1);
     swiperRef.current?.slideTo(0);
   }, [dispatch, page, filters]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [filters]);
 
   const handleOpenModal = (book) => {
     onOpenModal(book);
@@ -81,11 +84,22 @@ export const RecommendedBooks = ({
               <p>{book.author}</p>
             </div>
           </SwiperSlide>
-        ))}
+        ))}{" "}
+        <button
+          className={s.prevBtn}
+          onClick={handlePrevPage}
+          disabled={page === 1}
+        >
+          {"<"}
+        </button>
+        <button
+          className={s.prevBtn}
+          onClick={handleNextPage}
+          disabled={page === totalPages}
+        >
+          {">"}
+        </button>
       </SwiperComponent>
-
-      <div className="swiper-button-prev" onClick={handlePrevPage} />
-      <div className="swiper-button-next" onClick={handleNextPage} />
     </>
   );
 };

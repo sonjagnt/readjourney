@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import s from "./UserNav.module.css";
 import { logout } from "../../redux/auth/operations";
 import { NavLink } from "react-router";
+import { Icon } from "../../ui/Icon/Icon";
 
 export const UserNav = ({ closeFn, open }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,9 @@ export const UserNav = ({ closeFn, open }) => {
     return (
       <div className={s.overlay} onClick={closeFn}>
         <div className={s.menu}>
-          <button onClick={closeFn}> close menu</button>
+          <button onClick={closeFn}>
+            <Icon name="close" className={s.closeBtn} />
+          </button>
           <nav className={s.nav}>
             <NavLink
               to="/"

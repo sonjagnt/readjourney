@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addBook, addBookById, getBooks, getOwnBooks } from "./operations";
+import {
+  addBook,
+  addBookById,
+  getBooks,
+  getOwnBooks,
+  removeBook,
+} from "./operations";
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -56,9 +62,17 @@ const booksSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-
+      .addCase(getOwnBooks.pending, handlePending)
       .addCase(getOwnBooks.fulfilled, (state, action) => {
         state.userBooks = removeDuplicateBooks(action.payload);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(removeBook.pending, handlePending)
+      .addCase(removeBook.fulfilled, (state, action) => {
+        state.userBooks = state.userBooks.filter(
+          (book) => book._id !== action.payload._id
+        );
         state.isLoading = false;
         state.error = null;
       });

@@ -47,16 +47,9 @@
   object-fit: cover;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  width: 40px;
+.prevBtn {
+  background-color: var(--gray);
   height: 40px;
-  border-radius: 50%;
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 16px;
+  width: 40px;
+  margin-right: 40px;
 }
