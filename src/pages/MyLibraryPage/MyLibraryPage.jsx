@@ -5,6 +5,8 @@ import { RecommendedBooks } from "../../components/RecommendedBooks/RecommendedB
 import { Box } from "../../ui/Box/Box";
 
 export const MyLibraryPage = ({ openModal }) => {
+  console.log(typeof openModal);
+
   return (
     <section>
       <Dashboard>

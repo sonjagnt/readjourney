@@ -27,19 +27,24 @@ export const MyLibraryBooks = () => {
       <h2>My library</h2>
       <SwiperComponent slidesPerView={2} spaceBetween={20}>
         {userBooks.map((b) => (
-          <SwiperSlide key={b._id}>
+          <SwiperSlide key={b._id} className={s.bookCard}>
             <div className={s.imgBox}>
               {b.imageUrl ? (
                 <img src={b.imageUrl} alt="Book cover" className={s.img} />
               ) : (
-                <Icon name="no-img" width={"100%"} height={"100%"} />
+                <Icon name="book-open" />
               )}
             </div>
-            <h5>{b.title}</h5>
-            <p>{b.author}</p>
-            <button onClick={() => handleDelete(b._id)}>
-              <Icon name="bin" />
-            </button>
+            <div className={s.infoBox}>
+              <h5>{b.title}</h5>
+              <p>{b.author}</p>
+              <button
+                onClick={() => handleDelete(b._id)}
+                className={s.deleteBtn}
+              >
+                <Icon name="bin" width={14} />
+              </button>
+            </div>
           </SwiperSlide>
         ))}
       </SwiperComponent>

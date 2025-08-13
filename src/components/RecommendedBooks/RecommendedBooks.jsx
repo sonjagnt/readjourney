@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import s from "./RecommendedBooks.module.css";
 import { selectFilters } from "../../redux/filters/selectors";
+import { Icon } from "../../ui/Icon/Icon";
 
 export const RecommendedBooks = ({
   slidesPerView = 2,
@@ -25,7 +26,6 @@ export const RecommendedBooks = ({
   const filteredBooks = useSelector(selectFilteredBooks);
   const booksPerPage = 10;
   const filters = useSelector(selectFilters);
-
   const pageBooks = filteredBooks.slice(
     (page - 1) * booksPerPage,
     page * booksPerPage
@@ -57,11 +57,41 @@ export const RecommendedBooks = ({
   }
   return (
     <>
-      {variant === "default" ? (
-        <h2 className={s.title}>Recommended</h2>
-      ) : (
-        <h2 className={s.compactTitle}>Recommended books</h2>
-      )}
+      <div className={s.boxHeader}>
+        {variant === "default" ? (
+          <>
+            <h2 className={s.title}>Recommended</h2>{" "}
+            <div className={s.btnBox}>
+              <button
+                className={s.pageBtn}
+                onClick={handlePrevPage}
+                disabled={page === 1}
+              >
+                <Icon
+                  name="chevron-down"
+                  className={s.prev}
+                  width={14}
+                  color={page === 1 ? "var(--input)" : "var(--white)"}
+                />
+              </button>
+              <button
+                className={s.pageBtn}
+                onClick={handleNextPage}
+                disabled={page === totalPages}
+              >
+                <Icon
+                  name="chevron-down"
+                  className={s.next}
+                  width={14}
+                  color={page === totalPages ? "var(--input)" : "var(--white)"}
+                />
+              </button>
+            </div>
+          </>
+        ) : (
+          <h2 className={s.compactTitle}>Recommended books</h2>
+        )}{" "}
+      </div>
       <SwiperComponent
         modules={[Navigation]}
         spaceBetween={20}
@@ -85,21 +115,7 @@ export const RecommendedBooks = ({
             </div>
           </SwiperSlide>
         ))}{" "}
-        <button
-          className={s.prevBtn}
-          onClick={handlePrevPage}
-          disabled={page === 1}
-        >
-          {"<"}
-        </button>
-        <button
-          className={s.prevBtn}
-          onClick={handleNextPage}
-          disabled={page === totalPages}
-        >
-          {">"}
-        </button>
-      </SwiperComponent>
+      </SwiperComponent>{" "}
     </>
   );
 };

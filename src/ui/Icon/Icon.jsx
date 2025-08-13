@@ -6,7 +6,7 @@ export const Icon = ({
   className,
 }) => {
   return (
-    <svg width={width} height={height} fill={color} className={className}>
+    <svg width={width} height={height} className={className} fill={color}>
       <use href={`/icons/icons.svg#${name}`} />
     </svg>
   );

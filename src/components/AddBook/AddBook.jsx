@@ -52,7 +52,11 @@ export const AddBook = ({ onOpenModal, onSuccess }) => {
         </button>
       </form>
       <div className={s.container}>
-        <RecommendedBooks slidesPerView={3} variant="compact" />
+        <RecommendedBooks
+          slidesPerView={3}
+          variant="compact"
+          onOpenModal={onOpenModal}
+        />
         <div className={s.btnBox}>
           <Link to="/" className="secondaryBtn">
             Home
