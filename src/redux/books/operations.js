@@ -46,9 +46,13 @@ export const addBookById = createAsyncThunk(
 
 export const getOwnBooks = createAsyncThunk(
   "books/getOwnBooks",
-  async (_, thunkAPI) => {
+  async (status, thunkAPI) => {
     try {
-      const res = await axios.get("books/own");
+      const url =
+        !status || status === "all"
+          ? `books/own`
+          : `books/own?status=${status}`;
+      const res = await axios.get(url);
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

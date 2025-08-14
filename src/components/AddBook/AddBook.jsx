@@ -14,6 +14,7 @@ export const AddBook = ({ onOpenModal }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({ resolver: yupResolver(addBookValidationSchema) });
   const dispatch = useDispatch();
 
@@ -22,8 +23,9 @@ export const AddBook = ({ onOpenModal }) => {
       return;
     }
     onOpenModal(data);
-    dispatch(resetFilters());
     dispatch(addBook(data));
+    dispatch(resetFilters());
+    reset();
   };
 
   return (
