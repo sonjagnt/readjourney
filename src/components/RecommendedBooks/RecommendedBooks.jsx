@@ -114,8 +114,8 @@ export const RecommendedBooks = ({
               <p>{book.author}</p>
             </div>
           </SwiperSlide>
-        ))}{" "}
-      </SwiperComponent>{" "}
+        ))}
+      </SwiperComponent>
     </>
   );
 };

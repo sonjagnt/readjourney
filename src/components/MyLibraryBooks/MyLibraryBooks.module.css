@@ -1,3 +1,44 @@
+.title {
+  margin-bottom: 34px;
+}
+
+.emptyBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 100px 70px;
+  padding-top: 63px;
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-color: var(--input);
+}
+
+.icon {
+  width: 50px;
+}
+
+.emptyBox p {
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--white);
+  width: 197px;
+}
+
+.emptyBox span {
+  color: var(--gray);
+}
+
 .imgBox {
   border-radius: 8px;
   overflow: hidden;
@@ -43,6 +84,7 @@
 
 .infoBox {
   display: grid;
+  grid-template-columns: 1fr 28px;
   grid-template-areas:
     "t b"
     "a b";

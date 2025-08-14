@@ -22,9 +22,30 @@ export const MyLibraryBooks = () => {
     dispatch(getOwnBooks());
   }, [dispatch, userBooks]);
 
+  if (userBooks.length === 0 || !userBooks) {
+    return (
+      <>
+        <h2 className={s.title}>My library</h2>
+        <div className={s.emptyBox}>
+          <span className={s.iconBox}>
+            <img
+              src="/icons-color/books.svg"
+              className={s.icon}
+              alt="Books emoji"
+            />
+          </span>
+          <p>
+            To start training, add <span>some of your books</span> or from the
+            recommended ones
+          </p>
+        </div>
+      </>
+    );
+  }
   return (
-    <div>
-      <h2>My library</h2>
+    <>
+      <h2 className={s.title}>My library</h2>
+
       <SwiperComponent slidesPerView={2} spaceBetween={20}>
         {userBooks.map((b) => (
           <SwiperSlide key={b._id} className={s.bookCard}>
@@ -32,7 +53,7 @@ export const MyLibraryBooks = () => {
               {b.imageUrl ? (
                 <img src={b.imageUrl} alt="Book cover" className={s.img} />
               ) : (
-                <Icon name="book-open" />
+                <img src="/icons-color/image.svg" alt="No book cover" />
               )}
             </div>
             <div className={s.infoBox}>
@@ -48,6 +69,6 @@ export const MyLibraryBooks = () => {
           </SwiperSlide>
         ))}
       </SwiperComponent>
-    </div>
+    </>
   );
 };

@@ -9,7 +9,7 @@ import { Icon } from "../../ui/Icon/Icon";
 import { addBookValidationSchema } from "../../../utils/validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export const AddBook = ({ onOpenModal, onSuccess }) => {
+export const AddBook = ({ onOpenModal }) => {
   const {
     register,
     handleSubmit,
@@ -21,10 +21,9 @@ export const AddBook = ({ onOpenModal, onSuccess }) => {
     if (!data) {
       return;
     }
-    onOpenModal();
+    onOpenModal(data);
     dispatch(resetFilters());
     dispatch(addBook(data));
-    onSuccess();
   };
 
   return (
