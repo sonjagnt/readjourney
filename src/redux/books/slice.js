@@ -2,9 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   addBook,
   addBookById,
+  finishReading,
   getBooks,
   getOwnBooks,
   removeBook,
+  startReading,
 } from "./operations";
 
 const handlePending = (state) => {
@@ -73,6 +75,34 @@ const booksSlice = createSlice({
         state.userBooks = state.userBooks.filter(
           (book) => book._id !== action.payload._id
         );
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(startReading.pending, handlePending)
+      .addCase(startReading.fulfilled, (state, action) => {
+        const bookIndex = state.userBooks.findIndex(
+          (book) => book._id === action.payload._id
+        );
+        if (bookIndex !== -1) {
+          state.userBooks[bookIndex] = {
+            ...state.userBooks[bookIndex],
+            status: "in-progress",
+          };
+        }
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(finishReading.pending, handlePending)
+      .addCase(finishReading.fulfilled, (state, action) => {
+        const bookIndex = state.userBooks.findIndex(
+          (book) => book._id === action.payload._id
+        );
+        if (bookIndex !== -1) {
+          state.userBooks[bookIndex] = {
+            ...state.userBooks[bookIndex],
+            page: action.payload.page,
+          };
+        }
         state.isLoading = false;
         state.error = null;
       });

@@ -10,6 +10,7 @@ import { Swiper as SwiperComponent } from "swiper/react";
 
 import "swiper/css";
 import { customStyles, theme } from "../../../styles/customStyles";
+import { useNavigate } from "react-router";
 
 export const MyLibraryBooks = () => {
   const [status, setStatus] = useState("all");
@@ -17,6 +18,7 @@ export const MyLibraryBooks = () => {
     value: "all",
     label: "All books",
   });
+  const navigate = useNavigate();
   const userBooks = useSelector(selectUserBooks);
   const dispatch = useDispatch();
 
@@ -46,8 +48,8 @@ export const MyLibraryBooks = () => {
       <>
         <div className={s.boxHeader}>
           <h2 className={s.title}>My library</h2>
+
           <Select
-            className={s.select}
             options={options}
             value={selectedOption}
             onChange={handleChange}
@@ -87,7 +89,11 @@ export const MyLibraryBooks = () => {
       </div>
       <SwiperComponent slidesPerView={2} spaceBetween={20}>
         {userBooks.map((b) => (
-          <SwiperSlide key={b._id} className={s.bookCard}>
+          <SwiperSlide
+            key={b._id}
+            className={s.bookCard}
+            onClick={() => navigate("/reading", { state: { book: b } })}
+          >
             <div className={s.imgBox}>
               {b.imageUrl ? (
                 <img src={b.imageUrl} alt="Book cover" className={s.img} />

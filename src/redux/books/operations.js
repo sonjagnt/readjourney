@@ -71,3 +71,27 @@ export const removeBook = createAsyncThunk(
     }
   }
 );
+
+export const startReading = createAsyncThunk(
+  "books/startReading",
+  async ({ id, page }, thunkAPI) => {
+    try {
+      const res = await axios.post("books/reading/start", { id, page });
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const finishReading = createAsyncThunk(
+  "books/finishReading",
+  async ({ id, page }, thunkAPI) => {
+    try {
+      const res = await axios.post("books/reading/finish", { id, page });
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

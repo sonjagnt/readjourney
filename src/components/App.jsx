@@ -15,6 +15,7 @@ import { MyLibraryPage } from "../pages/MyLibraryPage/MyLibraryPage";
 import { ModalWindow } from "../ui/ModalWindow/ModalWindow";
 import { AddBookModal } from "./AddBookModal/AddBookModal";
 import { SuccessModal } from "./SuccessModal/SuccessModal";
+import { ReadingPage } from "../pages/ReadingPage/ReadingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ function App() {
             path="library"
             element={<MyLibraryPage openModal={handleOpenAddBookModal} />}
           />
+          <Route path="reading" element={<ReadingPage />} />
         </Route>
         <Route
           path="/register"

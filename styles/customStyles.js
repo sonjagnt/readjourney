@@ -29,8 +29,10 @@ export const customStyles = {
     color: "var(--white)",
     fontWeight: 500,
   }),
+
   menu: (base) => ({
     ...base,
+
     maxWidth: "120px",
     backgroundColor: "var(--input)",
     borderRadius: "12px",

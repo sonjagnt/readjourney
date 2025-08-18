@@ -4,8 +4,6 @@ import { MyLibraryBooks } from "../../components/MyLibraryBooks/MyLibraryBooks";
 import { Box } from "../../ui/Box/Box";
 
 export const MyLibraryPage = ({ openModal }) => {
-  console.log(typeof openModal);
-
   return (
     <section>
       <Dashboard>
